@@ -23,10 +23,14 @@ public class Program
         sv.NhapTTSV();
         sv.HienThiTTSV();*/
 
-        Person ps = new Person();
+        /*Person ps = new Person();
         string str = "Nguyen Van A";
         int a = 22;
-        Console.WriteLine("{0} sinh nam {1}", str,ps.GetYearOfBirth(a));
+        Console.WriteLine("{0} sinh nam {1}", str,ps.GetYearOfBirth(a));*/
+
+        GiaiPT gpt = new GiaiPT();
+        gpt.GPTBac1();
+        gpt.GPTBac2();
 
     }
 }

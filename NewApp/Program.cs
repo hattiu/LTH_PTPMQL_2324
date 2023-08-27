@@ -7,7 +7,7 @@ public class Program
         mpl.NhapTT();
         mpl.HienThiTT();*/
         
-        Person ps1 = new Person();
+        /*Person ps1 = new Person();
         Person ps2 = new Person();
         
         //gán giá trị cho thuộc tính đối tượng ps1
@@ -22,6 +22,11 @@ public class Program
         /*SinhVien sv = new SinhVien();
         sv.NhapTTSV();
         sv.HienThiTTSV();*/
+
+        Person ps = new Person();
+        string str = "Nguyen Van A";
+        int a = 22;
+        ps.HienThi2(str,a);
 
     }
 }

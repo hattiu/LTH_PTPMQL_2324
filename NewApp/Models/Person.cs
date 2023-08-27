@@ -32,5 +32,11 @@ namespace NewApp.Models
            
             System.Console.WriteLine("{0} - {1} -{2} tuoi",Name, Address,Age);
         }
+
+         public void HienThi2(string ten, int tuoi)
+        {
+           
+            System.Console.WriteLine("Sinh Vien {0} - {1} tuoi",ten, tuoi);
+        }
     }
 }

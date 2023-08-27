@@ -8,6 +8,12 @@ namespace NewApp.Models
         public int Age { get; set; }
 
         //khai bao cac phuong thuc
+        public Person()
+        {
+            Name = "Ho ten mac dinh";
+            Address = "Dia chi mac dinh";
+            Age = 20;
+        }
         public void Nhap()
         {
             System.Console.Write("Name: ");

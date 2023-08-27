@@ -7,20 +7,21 @@ public class Program
         mpl.NhapTT();
         mpl.HienThiTT();*/
         
-        /*Person ps1 = new Person();
+        Person ps1 = new Person();
         Person ps2 = new Person();
         
         //gán giá trị cho thuộc tính đối tượng ps1
 
-        ps2.Name = "Nguyan Van B";
-        ps2.Address = "ha noi";
-        ps2.Age = 18;
+        ps1.Name = "Nguyan Van B";
+        ps1.Address = "ha noi";
+        ps1.Age = 18;
         //gọi phương thưcs hiển thịthoong tin
-        ps2.HienThi();*/
+        ps1.HienThi();
+        ps2.HienThi();
 
-        SinhVien sv = new SinhVien();
+        /*SinhVien sv = new SinhVien();
         sv.NhapTTSV();
-        sv.HienThiTTSV();
+        sv.HienThiTTSV();*/
 
     }
 }

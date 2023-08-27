@@ -26,7 +26,7 @@ public class Program
         Person ps = new Person();
         string str = "Nguyen Van A";
         int a = 22;
-        ps.HienThi2(str,a);
+        ps.HienThi(str,a);
 
     }
 }

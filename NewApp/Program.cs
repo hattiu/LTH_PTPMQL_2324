@@ -37,10 +37,14 @@ public class Program
         sv.SinhVienCode = "123456789";
         sv.HienThi();*/
 
-        Employee emp = new Employee();
+        /*Employee emp = new Employee();
         emp.Nhap();
         emp.EmployeeCode = "987456123";
-        emp.HienThi();
+        emp.HienThi();*/
+
+        SinhVien sv = new SinhVien();
+        sv.Nhap();
+        sv.HienThi();
 
 
     }

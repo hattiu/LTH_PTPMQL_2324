@@ -26,5 +26,19 @@ namespace NewApp.Models
             
             System.Console.WriteLine("Sinh vien {0} - Dia chi {1} - {2} Tuoi - SDT: {3}",HoTen,diaChi,Age,SDT);
         }*/
+
+        public void Nhap()
+        {
+            base.Nhap();
+            System.Console.Write("Student Code = ");
+            SinhVienCode = Console.ReadLine();
+            
+        }
+
+        public void HienThi()
+        {
+            base.HienThi();
+            System.Console.Write("- Ma sinh vien: {0}", SinhVienCode);
+        }
     }
 }

@@ -28,9 +28,15 @@ public class Program
         int a = 22;
         Console.WriteLine("{0} sinh nam {1}", str,ps.GetYearOfBirth(a));*/
 
-        GiaiPT gpt = new GiaiPT();
+        /*GiaiPT gpt = new GiaiPT();
         gpt.GPTBac1();
-        gpt.GPTBac2();
+        gpt.GPTBac2();*/
+
+        SinhVien sv = new SinhVien();
+        sv.Nhap();
+        sv.SinhVienCode = "123456789";
+        sv.HienThi();
+
 
     }
 }

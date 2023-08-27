@@ -10,5 +10,9 @@ internal class Program
        System.Console.Write(" b = ");
        b = Convert.ToInt32(Console.ReadLine());
        System.Console.WriteLine("{0} + {1} = {2}",a,b,a+b);
+       System.Console.WriteLine("{0} - {1} = {2}",a,b,a-b);
+       System.Console.WriteLine("{0} x {1} = {2}",a,b,a*b);
+       System.Console.WriteLine("{0} / {1} = {2}",a,b,a/b);
+       System.Console.WriteLine("{0} % {1} = {2}",a,b,a%b);
     }
 }

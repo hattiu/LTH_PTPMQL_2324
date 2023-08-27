@@ -27,5 +27,19 @@ namespace NewApp.Models
             
             System.Console.WriteLine("Nhan vien {0} - Id {1} - tuoi la {2} co luong la {3}",TenNV,MaNV,Age,Luong);
         }*/
+
+        public void Nhap()
+        {
+            base.Nhap();
+            System.Console.Write("Employee Code = ");
+            EmployeeCode = Console.ReadLine();
+            
+        }
+
+        public void HienThi()
+        {
+            base.HienThi();
+            System.Console.Write("- Ma sinh vien: {0}", EmployeeCode);
+        }
     }
 }

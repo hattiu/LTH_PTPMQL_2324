@@ -42,9 +42,13 @@ public class Program
         emp.EmployeeCode = "987456123";
         emp.HienThi();*/
 
-        SinhVien sv = new SinhVien();
+        /*SinhVien sv = new SinhVien();
         sv.Nhap();
-        sv.HienThi();
+        sv.HienThi();*/
+
+        Employee emp = new Employee();
+        emp.Nhap();
+        emp.HienThi();
 
 
     }

@@ -2,10 +2,10 @@
 {
     private static void Main(string[] args)
     {
-       //Khai báo và gán giá trị cho 2 biến số kiểu string và int, sau đó in ra màn hình:
-        string hoTen = "Le Thi Hoa";
-        int maSV = 1921050251;
-        Console.WriteLine("Sinh Vien {0} - {1} maSV", hoTen, maSV);
+       //Khai báo và gán giá trị cho 2 hằng số kiểu string và int, sau đó in ra màn hình
+        const string hoTen = "Le thi hoa";
+        const int maSV = 1921050251;
+        Console.WriteLine("Sinh vien {0} - Ma sinh vien {1}", hoTen, maSV);
 
     }
 }

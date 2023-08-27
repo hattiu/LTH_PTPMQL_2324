@@ -26,25 +26,5 @@ namespace NewApp.Models
            
             System.Console.WriteLine("{0} - {1} -{2} tuoi",Name, Address,Age);
         }
-
-        //xây dựng phương thức Display2(), chứa 2 tham số ten (kiểu string) và tuoi (kiểu int)
-        public void HienThi2(string Name, int Age)
-        {
-            System.Console.WriteLine("{0} - {1} tuoi",Name,Age);
-        }
-
-        //xây dựng phương thức GetYearOfBirth(), sử dụng để tính năm sinh dựa trên tuổi của đối tượng (được truyền vào dưới dạng tham số)
-        public int GetYearOfBirth(int age)
-        {
-            int yearOfBirth = 2023 - age;
-            return yearOfBirth;
-        }
-
-        
-        
-        
-        
-        
-        
     }
 }

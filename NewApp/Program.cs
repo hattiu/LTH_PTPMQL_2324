@@ -1,13 +1,16 @@
-﻿using System.Runtime.Intrinsics.Arm;
-
-internal class Program
+﻿using NewApp.Models;
+public class Program
 {
     private static void Main(string[] args)
     {
-     for(int i=0; i<10; i++)
-     {
-        if(i == 5) continue;
-        System.Console.WriteLine("vong lap thu {0}", i);
-     }
+        Person ps1 = new Person();
+        Person ps2 = new Person();
+
+        ps1.Name = "Nguyen Van A";
+        ps1.Address = "Ha Noi";
+        ps1.Age = 18;
+
+        ps1.HienThi();
+
     }
 }

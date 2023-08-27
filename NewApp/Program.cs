@@ -26,7 +26,7 @@ public class Program
         Person ps = new Person();
         string str = "Nguyen Van A";
         int a = 22;
-        ps.HienThi(str,a);
+        Console.WriteLine("{0} sinh nam {1}", str,ps.GetYearOfBirth(a));
 
     }
 }

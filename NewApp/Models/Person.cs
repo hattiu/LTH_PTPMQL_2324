@@ -44,5 +44,11 @@ namespace NewApp.Models
            
             System.Console.WriteLine("Sinh Vien {0} - {1} ",ten, diaChi);
         }
+
+        public int GetYearOfBirth(int age)
+        {
+            int yearOfBirth = 2023 - age;
+            return yearOfBirth;
+        }
     }
 }

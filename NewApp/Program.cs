@@ -2,8 +2,10 @@
 {
     private static void Main(string[] args)
     {
-        Console.Write("Nhap vao du lieu: ");
-        string str = Console.ReadLine();
-        Console.WriteLine("Du lieu vua nhap vao: " + str);
+       //Khai báo và gán giá trị cho 2 biến số kiểu string và int, sau đó in ra màn hình:
+        string hoTen = "Le Thi Hoa";
+        int maSV = 1921050251;
+        Console.WriteLine("Sinh Vien {0} - {1} maSV", hoTen, maSV);
+
     }
 }

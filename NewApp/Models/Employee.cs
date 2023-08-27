@@ -1,8 +1,11 @@
 namespace NewApp.Models
 {
-    public class Employee
+    public class Employee : Person
     {
-        public int MaNV { get; set;}
+        public string EmployeeCode { get; set; }
+        
+        
+        /*public int MaNV { get; set;}
         public string TenNV { get; set;}
         public int Age { get; set; }
         public float Luong { get; set; }
@@ -23,6 +26,6 @@ namespace NewApp.Models
         {
             
             System.Console.WriteLine("Nhan vien {0} - Id {1} - tuoi la {2} co luong la {3}",TenNV,MaNV,Age,Luong);
-        }
+        }*/
     }
 }

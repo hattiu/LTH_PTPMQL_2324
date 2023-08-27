@@ -32,10 +32,15 @@ public class Program
         gpt.GPTBac1();
         gpt.GPTBac2();*/
 
-        SinhVien sv = new SinhVien();
+        /*SinhVien sv = new SinhVien();
         sv.Nhap();
         sv.SinhVienCode = "123456789";
-        sv.HienThi();
+        sv.HienThi();*/
+
+        Employee emp = new Employee();
+        emp.Nhap();
+        emp.EmployeeCode = "987456123";
+        emp.HienThi();
 
 
     }

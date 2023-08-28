@@ -5,7 +5,7 @@ namespace NewApp.Models
         public string EmployeeCode { get; set; }
         
         
-        /*public int MaNV { get; set;}
+        public int MaNV { get; set;}
         public string TenNV { get; set;}
         public int Age { get; set; }
         public float Luong { get; set; }
@@ -21,14 +21,23 @@ namespace NewApp.Models
             System.Console.WriteLine("Nhap vao luong :");
             Luong = Convert.ToSingle(Console.ReadLine());
 
+            try{
+                MaNV = Convert.ToInt16(Console.ReadLine());
+                
+            }catch(Exception e)
+            {
+                //cau lenh xu li ngoai le
+                MaNV = 0;
+            }
+
         }
         public void HienThiTT()
         {
             
             System.Console.WriteLine("Nhan vien {0} - Id {1} - tuoi la {2} co luong la {3}",TenNV,MaNV,Age,Luong);
-        }*/
+        }
 
-        public void Nhap()
+        /*public void Nhap()
         {
             base.Nhap();
             System.Console.Write("Employee Code = ");
@@ -41,6 +50,6 @@ namespace NewApp.Models
         {
             base.HienThi();
             System.Console.Write("- Ma sinh vien: {0}", EmployeeCode);
-        }
+        }*/
     }
 }

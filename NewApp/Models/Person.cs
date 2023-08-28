@@ -1,3 +1,5 @@
+using System.Runtime.Intrinsics.Arm;
+
 namespace NewApp.Models
 {
     public class Person
@@ -24,6 +26,14 @@ namespace NewApp.Models
 
             System.Console.Write("Age: ");
             Age = Convert.ToInt16(Console.ReadLine());
+            try{
+                Age = Convert.ToInt16(Console.ReadLine());
+                
+            }catch(Exception e)
+            {
+                //cau lenh xu li ngoai le
+                Age = 0;
+            }
             
         }
 

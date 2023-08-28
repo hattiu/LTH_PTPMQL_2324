@@ -46,9 +46,14 @@ public class Program
         sv.Nhap();
         sv.HienThi();*/
 
-        Employee emp = new Employee();
+        /*Employee emp = new Employee();
         emp.Nhap();
-        emp.HienThi();
+        emp.HienThi();*/
+
+        //xu li ngoaij le
+        Person ps = new Person();
+        ps.Nhap();
+        ps.HienThi();
 
 
     }

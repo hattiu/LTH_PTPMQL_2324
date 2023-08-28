@@ -35,6 +35,7 @@ namespace NewApp.Models
             EmployeeCode = Console.ReadLine();
             
         }
+        
 
         public void HienThi()
         {

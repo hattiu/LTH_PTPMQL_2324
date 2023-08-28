@@ -51,9 +51,13 @@ public class Program
         emp.HienThi();*/
 
         //xu li ngoaij le
-        Person ps = new Person();
+        /*Person ps = new Person();
         ps.Nhap();
-        ps.HienThi();
+        ps.HienThi();*/
+
+        SinhVien sv = new SinhVien();
+        sv.NhapTTSV();
+        sv.HienThiTTSV();
 
 
     }

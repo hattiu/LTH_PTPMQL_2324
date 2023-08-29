@@ -60,5 +60,8 @@ namespace NewApp.Models
             int yearOfBirth = 2023 - age;
             return yearOfBirth;
         }
+
+        
+        
     }
 }

@@ -1,4 +1,6 @@
-﻿using NewApp.Models;
+﻿using System.Security.Cryptography;
+using System.Transactions;
+using NewApp.Models;
 public class Program
 {
     private static void Main(string[] args)
@@ -46,9 +48,9 @@ public class Program
         sv.Nhap();
         sv.HienThi();*/
 
-        Employee emp = new Employee();
+        /*Employee emp = new Employee();
         emp.NhapTT();
-        emp.HienThiTT();
+        emp.HienThiTT();*/
 
         //xu li ngoaij le
         /*Person ps = new Person();
@@ -58,6 +60,49 @@ public class Program
         /*SinhVien sv = new SinhVien();
         sv.NhapTTSV();
         sv.HienThiTTSV();*/
+
+        int n = 0;
+        do
+        {
+            Console.WriteLine("Nhap vao n = ");
+            n = Convert.ToInt32(Console.ReadLine());
+            
+        } while (n <0);
+
+        SinhVien[] sinhvienArr = new SinhVien[n];
+        //nhap thong tin sinh vien
+        for(int i = 0; i < sinhvienArr.Length; i ++)
+        {
+            System.Console.WriteLine("nhap vao phan tu thu {0}",i);
+            SinhVien sv = new SinhVien();
+            sv.NhapTTSV();
+            sinhvienArr[i] = sv;
+        }
+        //hien thi thong tin sinh vien
+        foreach(SinhVien sv in sinhvienArr)
+        {
+            sv.HienThiTTSV();
+
+        }
+        //sua thong tin sinh vien
+        foreach(SinhVien sv in sinhvienArr)
+        {
+            System.Console.WriteLine("thong tin sua la: {0} tuoi",sv.Age);
+            //SinhVien svUpdate = new SinhVien();
+            //svUpdate.HienThiTTSV();
+            sv.HienThiTTSV();
+
+        }
+        //xoa thong tin sinh vien
+        foreach(SinhVien sv in sinhvienArr)
+        {
+            sv.Age=null;
+            sv.HienThiTTSV();
+
+        }
+
+
+
 
 
     }

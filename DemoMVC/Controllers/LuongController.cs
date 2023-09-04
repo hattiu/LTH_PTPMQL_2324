@@ -12,13 +12,13 @@ namespace DemoMVC.Controllers
         public IActionResult Index(string luongCB, string heSo, string phuCap)
         {
             double cb =0, hs =0, pc =0, luong = 0;
-            string trave;
+            string luongNV;
             if(!String.IsNullOrEmpty(luongCB)) cb = Convert.ToDouble(luongCB);
             if(!String.IsNullOrEmpty(heSo)) hs = Convert.ToDouble(heSo);
             if(!String.IsNullOrEmpty(phuCap)) pc = Convert.ToDouble(phuCap);
             luong = cb*hs+pc;
-            trave = "Lương của bạn hiện tại là: " + luong;
-            ViewBag.luong = trave;
+            luongNV = "Lương : " + luong ;
+            ViewBag.luong = luongNV;
             return View();
         }
     }

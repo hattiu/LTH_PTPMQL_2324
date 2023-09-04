@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\LTH_BaiTH\\DemoMVC\\DemoMVC.csproj": {}
+    "D:\\LTH_BaiTH\\DemoMVC\\DemoMVC.csproj": {}
   },
   "projects": {
-    "d:\\LTH_BaiTH\\DemoMVC\\DemoMVC.csproj": {
+    "D:\\LTH_BaiTH\\DemoMVC\\DemoMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\LTH_BaiTH\\DemoMVC\\DemoMVC.csproj",
+        "projectUniqueName": "D:\\LTH_BaiTH\\DemoMVC\\DemoMVC.csproj",
         "projectName": "DemoMVC",
-        "projectPath": "d:\\LTH_BaiTH\\DemoMVC\\DemoMVC.csproj",
+        "projectPath": "D:\\LTH_BaiTH\\DemoMVC\\DemoMVC.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "d:\\LTH_BaiTH\\DemoMVC\\obj\\",
+        "outputPath": "D:\\LTH_BaiTH\\DemoMVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"

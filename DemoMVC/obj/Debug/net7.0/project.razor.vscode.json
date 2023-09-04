@@ -24070,6 +24070,11 @@
       "FilePath": "d:\\LTH_BaiTH\\DemoMVC\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\LTH_BaiTH\\DemoMVC\\Views\\Luong\\Index.cshtml",
+      "TargetPath": "Views\\Luong\\Index.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }

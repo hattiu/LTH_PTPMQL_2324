@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using DemoMVC.Models;
 using Microsoft.EntityFrameworkCore;
 namespace DemoMVC.Data
@@ -9,6 +13,6 @@ namespace DemoMVC.Data
 
         }
 
-        public DbSet<Student> Students {get; set;}
+        public DbSet<Student> Student {get; set;} = default!;
     }
 }

@@ -1,3 +1,15 @@
+using DemoMVC.Data;
+using DemoMVC.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+
 namespace DemoMVC.Controllers
 {
     public class StudentController : Controller
@@ -33,8 +45,10 @@ namespace DemoMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            return View(std);
         }
-        return View(std);
+
+        
         private bool StudentExists(string id)
         {
             return _context.Students.Any(e => e.StudentID == id);
@@ -43,7 +57,7 @@ namespace DemoMVC.Controllers
         //GET: Student/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if(id == null)
+            if(id == null )
             {
                 return NotFound();
             }
@@ -53,8 +67,10 @@ namespace DemoMVC.Controllers
             {
                 return NotFound();
             }
+            return View(student);
+
         }
-        return View(student);
+        
 
         //POST: student/edit/5
         [HttpPost]
@@ -87,6 +103,43 @@ namespace DemoMVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(std);
+            //get:Product/delete/5
         }
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (id == null || _context.Students == null)
+            {
+                return NotFound();
+            }
+            var student = await _context.Student
+                .FirstOrDefaultAsync(m => m.StudentID == id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
+        }
+
+        //POST>Product/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            if (_context.Student == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Student'  is null.");
+            }
+            var student = await _context.Student.FindAsync(id);
+            if (student != null)
+            {
+                _context.Student.Remove(student);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        
     }
 }

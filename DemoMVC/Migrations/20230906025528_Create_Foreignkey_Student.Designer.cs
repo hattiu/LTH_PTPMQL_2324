@@ -2,6 +2,7 @@
 using DemoMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230906025528_Create_Foreignkey_Student")]
+    partial class Create_Foreignkey_Student
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -28,20 +31,6 @@ namespace DemoMVC.Migrations
                     b.HasKey("FacultyID");
 
                     b.ToTable("Facuty");
-                });
-
-            modelBuilder.Entity("DemoMVC.Models.SinhVien", b =>
-                {
-                    b.Property<string>("SinhVienID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SinhViennName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("SinhVienID");
-
-                    b.ToTable("SinhViens");
                 });
 
             modelBuilder.Entity("DemoMVC.Models.Student", b =>

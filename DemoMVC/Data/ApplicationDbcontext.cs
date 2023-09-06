@@ -13,6 +13,8 @@ namespace DemoMVC.Data
 
         }
 
-        public DbSet<Student> Student {get; set;} = default!;
+        public DbSet<Student> Student {get; set;} 
+        public DbSet<DemoMVC.Models.Faculty> Facuty {get; set;} = default!;
+        
     }
 }

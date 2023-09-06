@@ -25,33 +25,36 @@ namespace DemoMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var model = await _context.Students.ToListAsync();
+            var model = await _context.Student.ToListAsync();
             return View(model);
         }
 
         //action tra ve view de them moi sinh vien
-
+        //get: Student/Create
         public IActionResult Create()
         {
+            ViewData["FacultyID"] = new SelectList(_context.Facuty, "FacultyID","FacultyName");
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         //action xu ly du lieu sinh vien giui len tu view va luu va databse
-        public async Task<IActionResult> Create(StudentController std)
+        public async Task<IActionResult> Create([Bind("StudentID,StudentName,FacultyID")] Student student)
         {
             if(ModelState.IsValid)
             {
-                _context.Add(std);
+                _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(std);
+            ViewData["FacultyID"] = new SelectList(_context.Facuty, "FacultyID","FacultyName", student.FacultyID);
+            return View(student);
         }
 
         
         private bool StudentExists(string id)
         {
-            return _context.Students.Any(e => e.StudentID == id);
+            return _context.Student.Any(e => e.StudentID == id);
         }
 
         //GET: Student/Edit/5
@@ -62,7 +65,7 @@ namespace DemoMVC.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
+            var student = await _context.Student.FindAsync(id);
             if(student == null)
             {
                 return NotFound();
@@ -107,7 +110,7 @@ namespace DemoMVC.Controllers
         }
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || _context.Student == null)
             {
                 return NotFound();
             }

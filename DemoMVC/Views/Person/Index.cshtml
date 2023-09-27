@@ -1,13 +1,16 @@
 <h1>NHAP VAO THONG TIN SINH VIEN</h1>
 
 <form asp-action = "Index">
+    <label>PersonId</label>
+    <input type="text" name="PersonId">
+    <br>
     <label>Name</label>
     <input type="text" name="Name">
     <br>
-    <label>Dia chi</label>
-    <input type="text" name="DiaChi">
+    <label>Address</label>
+    <input type="text" name="Address">
     <br>
     <input type="submit" value="Giui">
 
 </form>
-<h3>@ViewBag.thongBao</h3>
+<h3>@ViewBag.infoPerson</h3>

@@ -1,119 +1,50 @@
-using DemoMVC.Data;
-using DemoMVC.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.EntityFrameworkCore;
+using DemoMVC.Data;
+using DemoMVC.Models;
+using DemoMVC.Models.Process;
+using OfficeOpenXml;
+using System.IO.Pipelines;
+using X.PagedList;
 
 namespace DemoMVC.Controllers
 {
     public class StudentController : Controller
     {
-        //khia bao DbContext de lam viec voi
         private readonly ApplicationDbContext _context;
-        public StudentController (ApplicationDbContext context)
+        private ExcelProcess _excelProcess = new ExcelProcess();
+
+        public StudentController(ApplicationDbContext context)
         {
             _context = context;
         }
-
-        //action tra ve view de hien th danh sach
-
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index (int? page)
         {
-            var model = await _context.Student.ToListAsync();
+            var model = _context.Student.ToList().ToPagedList(page ?? 1, 5);
             return View(model);
         }
 
-        //action tra ve view de them moi sinh vien
-        //get: Student/Create
-        public IActionResult Create()
+        // GET: Student
+        /*public async Task<IActionResult> Index()
         {
-            ViewData["FacultyID"] = new SelectList(_context.Facuty, "FacultyID","FacultyName");
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        //action xu ly du lieu sinh vien giui len tu view va luu va databse
-        public async Task<IActionResult> Create([Bind("StudentID,StudentName,FacultyID")] Student student)
-        {
-            if(ModelState.IsValid)
-            {
-                _context.Add(student);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["FacultyID"] = new SelectList(_context.Facuty, "FacultyID","FacultyName", student.FacultyID);
-            return View(student);
-        }
+              return _context.Student != null ? 
+                          View(await _context.Student.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Student'  is null.");
+        }*/
 
-        
-        private bool StudentExists(string id)
-        {
-            return _context.Student.Any(e => e.StudentID == id);
-        }
-
-        //GET: Student/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if(id == null )
-            {
-                return NotFound();
-            }
-
-            var student = await _context.Student.FindAsync(id);
-            if(student == null)
-            {
-                return NotFound();
-            }
-            return View(student);
-
-        }
-        
-
-        //POST: student/edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StudentID, StudentName")] Student std)
-        {
-            if(id != std.StudentID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try 
-                {
-                    _context.Update(std);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!StudentExists(std.StudentID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(std);
-            //get:Product/delete/5
-        }
-        public async Task<IActionResult> Delete(string id)
+        // GET: Student/Details/5
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Student == null)
             {
                 return NotFound();
             }
+
             var student = await _context.Student
                 .FirstOrDefaultAsync(m => m.StudentID == id);
             if (student == null)
@@ -124,7 +55,98 @@ namespace DemoMVC.Controllers
             return View(student);
         }
 
-        //POST>Product/Delete/5
+        // GET: Student/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Student/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("StudentID,StudentName")] Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(student);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(student);
+        }
+
+        // GET: Student/Edit/5
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (id == null || _context.Student == null)
+            {
+                return NotFound();
+            }
+
+            var student = await _context.Student.FindAsync(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            return View(student);
+        }
+
+        // POST: Student/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("StudentID,StudentName")] Student student)
+        {
+            if (id != student.StudentID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(student);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!StudentExists(student.StudentID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(student);
+        }
+
+        // GET: Student/Delete/5
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (id == null || _context.Student == null)
+            {
+                return NotFound();
+            }
+
+            var student = await _context.Student
+                .FirstOrDefaultAsync(m => m.StudentID == id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
+        }
+
+        // POST: Student/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
@@ -138,11 +160,60 @@ namespace DemoMVC.Controllers
             {
                 _context.Student.Remove(student);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        
+        private bool StudentExists(string id)
+        {
+          return (_context.Student?.Any(e => e.StudentID == id)).GetValueOrDefault();
+        }
+
+        //phan file excel
+        public async Task<IActionResult> Upload()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>Upload(IFormFile file)
+        {
+            if (file!=null)
+            {
+                string fileExtension = Path.GetExtension(file.FileName);
+                if (fileExtension != ".xls" && fileExtension != ".xls")
+                {
+                    ModelState.AddModelError ("","");
+                }
+                else
+                {
+                    //rename file when upload to sever
+                    var fileName = DateTime.Now.ToShortTimeString() + fileExtension;
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Upload/Excel", fileName);
+                    var fileLocation = new FileInfo(filePath).ToString();
+                    using (var stream = new FileStream (filePath, FileMode.Create))
+                    {
+                        //save file to sever
+                        await file.CopyToAsync(stream);
+                        var dt = _excelProcess.ExcelToDataTable(fileLocation);
+                        //using for loop to read data from dt
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            var std = new Student();
+                            //set value to attributes
+                            std.StudentID = dt.Rows[i][0].ToString();
+                            std.StudentName = dt.Rows[i][1].ToString();
+                            //add object to context
+                            _context.Add(std);
+                           
+                        }
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+            }
+            return View();
+        }
     }
 }

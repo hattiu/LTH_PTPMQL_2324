@@ -16,41 +16,75 @@ namespace DemoMVC.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
 
-            modelBuilder.Entity("DemoMVC.Models.Faculty", b =>
+            modelBuilder.Entity("DemoMVC.Models.DaiLy", b =>
                 {
-                    b.Property<string>("FacultyID")
+                    b.Property<string>("DaiLyId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FacultyName")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("FacultyID");
+                    b.Property<string>("DaiLyName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("Facuty");
+                    b.HasKey("DaiLyId");
+
+                    b.ToTable("DaiLys");
                 });
 
-            modelBuilder.Entity("DemoMVC.Models.SinhVien", b =>
+            modelBuilder.Entity("DemoMVC.Models.HeThongPhanPhoi", b =>
                 {
-                    b.Property<string>("SinhVienID")
+                    b.Property<string>("MaHeThong")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SinhViennName")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("SinhVienID");
+                    b.Property<string>("HeThongPhanPhoiName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("SinhViens");
+                    b.Property<string>("NamHeThong")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MaHeThong");
+
+                    b.ToTable("HeThongPhanPhois");
+                });
+
+            modelBuilder.Entity("DemoMVC.Models.Person", b =>
+                {
+                    b.Property<string>("PersonId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("PersonId");
+
+                    b.ToTable("Person");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("DemoMVC.Models.Student", b =>
                 {
                     b.Property<string>("StudentID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FacultyID")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("StudentName")
@@ -59,20 +93,23 @@ namespace DemoMVC.Migrations
 
                     b.HasKey("StudentID");
 
-                    b.HasIndex("FacultyID");
-
-                    b.ToTable("Student");
+                    b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("DemoMVC.Models.Student", b =>
+            modelBuilder.Entity("DemoMVC.Models.Employee", b =>
                 {
-                    b.HasOne("DemoMVC.Models.Faculty", "Faculty")
-                        .WithMany()
-                        .HasForeignKey("FacultyID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasBaseType("DemoMVC.Models.Person");
 
-                    b.Navigation("Faculty");
+                    b.Property<int>("Age")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.ToTable("Person");
+
+                    b.HasDiscriminator().HasValue("Employee");
                 });
 #pragma warning restore 612, 618
         }
